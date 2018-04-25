@@ -1,0 +1,39 @@
+//file -> component
+<template>
+    <ul>
+        <li v-for="(list ) in lists" v-bind:key="list.id">
+            <a v-bind:href="list.path">{{list.name}}</a>
+        </li>
+    </ul>
+</template>
+
+<script>
+    export default {
+        data: () => {
+            return {
+                lists: [
+                    {
+                        id: 1,
+                        name: 'home',
+                        path: '/',
+                    },
+                    {
+                        id: 2,
+                        name: 'sub',
+                        path: '/sub',
+                    }
+                ]
+            }
+        },
+        mounted() {
+            console.log('navi sucsses!!!')
+        },
+    }
+</script>
+
+
+//file -> blade
+<!-- nvai -->
+<div id="navi">
+    <navi-component></navi-component>
+</div>
