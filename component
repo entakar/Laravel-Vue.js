@@ -1,0 +1,91 @@
+Controller
+
+$data = array();
+
+        // 古川未鈴
+        $id = 0;
+        $data[$id]['id'] = $id;
+        $data[$id]['name'] = '古川未鈴';
+        $data[$id]['name_kana'] = 'MirinFurukawa';
+        $data[$id]['age'] = '17';
+        // 相沢梨沙
+        $id += 1;
+        $data[$id]['id'] = $id;
+        $data[$id]['name'] = '相沢梨沙';
+        $data[$id]['name_kana'] = 'RisaAizawa';
+        $data[$id]['age'] = '17';
+        // 夢眠ねむ
+        $id += 1;
+        $data[$id]['id'] = $id;
+        $data[$id]['name'] = '夢眠ねむ';
+        $data[$id]['name_kana'] = 'NemuYumemi';
+        $data[$id]['age'] = '17';
+        // 成瀬瑛美
+        $id += 1;
+        $data[$id]['id'] = $id;
+        $data[$id]['name'] = '成瀬瑛美';
+        $data[$id]['name_kana'] = 'EimiNaruse';
+        $data[$id]['age'] = '17';
+        // 藤咲彩音
+        $id += 1;
+        $data[$id]['id'] = $id;
+        $data[$id]['name'] = '藤咲彩音';
+        $data[$id]['name_kana'] = 'AyaneFujisaki';
+        $data[$id]['age'] = '22';
+        // 鹿目凛
+        $id += 1;
+        $data[$id]['id'] = $id;
+        $data[$id]['name'] = '鹿目凛';
+        $data[$id]['name_kana'] = 'RinKaname';
+        $data[$id]['age'] = '21';
+        // 根本凪
+        $id += 1;
+        $data[$id]['id'] = $id;
+        $data[$id]['name'] = '根本凪';
+        $data[$id]['name_kana'] = 'NagiNemoto';
+        $data[$id]['age'] = '19';
+
+        $items = json_encode($data);
+
+        return view('welcome.index', compact('items') );
+        
+blade
+
+        <!-- main    -->
+        <div id="main"> 
+             <main-component :users="{{ $items }}"></main-component>
+        </div>
+         
+
+component(Vue.js)
+
+<template>
+    <div>
+        <div>
+            <p>表示</p>
+            {{ users[0].name }}：{{ users[0].age }}
+            {{ users[1].name }}：{{ users[1].age }}
+        </div>
+        <div id="users">
+            <p>リスト表示</p>
+            <ul>
+                <li v-for="(list ) in users" v-bind:key="list.id">
+                    {{ list.id + 1 }}
+                    {{ list.name }}
+                    {{ list.name_kana }}
+                    {{ list.age }}才
+                </li>
+            </ul>
+        </div>
+    </div>
+</template>
+
+<script>
+    export default {
+        props: ["users"],
+
+        mounted() {
+            console.log('main sucsses!!!');
+        },
+    }
+</script>
